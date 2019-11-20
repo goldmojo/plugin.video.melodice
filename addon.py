@@ -90,7 +90,7 @@ index = 1
 
 for tag in youtube_tags:
     # Path to let videos be played by the youtube plugin
-    youtubePath = 'plugin://plugin.video.youtube/?action=play_video&videoid='
+    youtubePath = 'plugin://plugin.video.youtube/play/?video_id='
     # Add youtube tag to path to make videos play with the kodi youtube plugin
     path = youtubePath + tag
     # Create listitem to insert in the playlist
