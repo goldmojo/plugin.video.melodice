@@ -13,7 +13,7 @@
 		<description lang="en">Search for a game on Melodice.org website and play associated playlist</description>
 		<license>GNU General Public License, v2</license>
 		<language></language>
-		<source>https://github.com/goldmojo/Kodi_addons/plugin.video.melodice</source>
+		<source>https://github.com/goldmojo/plugin.video.melodice</source>
 		<assets>
 			<icon>icon.png</icon>
 		</assets>
