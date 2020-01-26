@@ -2,7 +2,7 @@
 
 # Melodice
 
-This addon searches for a game on Melodice.org website and play associated playlist in Kodi Krypton (not tested on other versions).
+This addon searches for a game on Melodice.org website and play associated playlist in Kodi Krypton and Leia (not tested on other versions).
 
 - Installation
     -
