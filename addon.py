@@ -2,7 +2,9 @@ import xbmc
 import xbmcaddon
 import xbmcgui
 
-import httplib, urllib
+import http.client
+import urllib.parse
+
 import re
 import sys
 
@@ -14,14 +16,14 @@ boardgamename = xbmcgui.Dialog().input ("Game name", type=xbmcgui.INPUT_ALPHANUM
 
 # Open Melodice connection
 https_url = 'melodice.org'
-httpcon = httplib.HTTPSConnection (https_url)
-# httplib debug level => Set to 1 to debug
+httpcon = http.client.HTTPSConnection (https_url)
+# http.client debug level => Set to 1 to debug
 httpcon.set_debuglevel (0)
 
 # Get CSRF token
 httpcon.request("GET", "/")
 response = httpcon.getresponse()
-webpage = response.read()
+webpage = response.read().decode('utf-8')
 CSRF_re = re.compile (r'^.*name=\'csrfmiddlewaretoken\'\s+value=\'(?P<CSRF>\S+)\'.*$')
 CSRF_token = None
 for line in webpage.split('\n'):
@@ -37,7 +39,7 @@ if not CSRF_token:
     sys.exit (1)
 
 # Melodice search API call
-params = urllib.urlencode({'csrfmiddlewaretoken': CSRF_token, 'q': boardgamename})
+params = urllib.parse.urlencode({'csrfmiddlewaretoken': CSRF_token, 'q': boardgamename})
 
 headers = {
     'Cookie' : 'csrftoken=' + CSRF_token,
@@ -52,7 +54,7 @@ playlist_webpage = None
 if response.status == 302:
     if response.getheader('Location'):
         playlist_webpage = response.getheader('Location')
-        response.read ()
+        response.read().decode('utf-8')
     else:
         xbmcgui.Dialog().ok ('Melodice', 'Game playlist not found, exiting ...')
         xbmc.log ("Melodice : Game playlist not found", xbmc.LOGERROR)
@@ -65,7 +67,7 @@ else:
 # Get the playlist from Melodice search result webpage
 httpcon.request("GET", playlist_webpage)
 response = httpcon.getresponse()
-webpage = response.read()
+webpage = response.read().decode('utf-8')
 playlist_re = re.compile (r'^.*http://www.youtube.com/watch_videos%3Fvideo_ids=(?P<TAGS>\S+?)".*$')
 youtube_tags = []
 for line in webpage.split('\n'):
