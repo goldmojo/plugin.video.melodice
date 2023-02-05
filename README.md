@@ -7,7 +7,7 @@ This addon searches for a game on Melodice.org website and play associated playl
 - Installation
     -
     * Kodi : Enable - `Settings -> System -> Add-ons -> Unknown Sources`
-    1. Download repository: [repository.goldmojo-x.x.x.zip](https://github.com/goldmojo/repository/raw/master/zips/repository.goldmojo/repository.goldmojo-0.0.2.zip)
+    1. Download repository: [repository.goldmojo-x.x.x.zip](https://github.com/goldmojo/repository/raw/master/zips/repository.goldmojo/repository.goldmojo-0.0.3.zip)
     2. [Install from zip file](http://kodi.wiki/view/Add-on_manager#How_to_install_from_a_ZIP_file) (repository.goldmojo-x.x.x.zip)
     3. [Install from repository](http://kodi.wiki/view/add-on_manager#How_to_install_add-ons_from_a_repository) (goldmojo Add-on Repository)
 
